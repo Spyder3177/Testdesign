@@ -1,10 +1,10 @@
 {
-  "name": "K Studio Design System",
+  "name": "K Studio V4 Swipe",
   "short_name": "K Studio",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#060914",
-  "theme_color": "#060914",
+  "background_color": "#050816",
+  "theme_color": "#050816",
   "orientation": "portrait",
   "icons": [
     {

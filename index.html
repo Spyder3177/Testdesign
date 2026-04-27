@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#060914" />
+  <meta name="theme-color" content="#050816" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="K Studio" />
@@ -11,227 +11,226 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
 
-  <title>K Studio — Design System</title>
+  <title>K Studio V4</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <div class="ambient"></div>
+  <div class="noise"></div>
+  <div class="aurora"></div>
 
   <main class="app">
-    <header class="status-safe">
+    <header class="topbar">
       <div class="brand">
-        <div class="app-icon">K</div>
+        <div class="logo">K</div>
         <div>
           <h1>K Studio</h1>
-          <p>Design system personnel</p>
+          <p>Swipe design system</p>
         </div>
       </div>
 
-      <button class="icon-button" id="themeToggle" aria-label="Changer le thème">
-        <span>☀️</span>
-      </button>
+      <button class="round" id="themeToggle" aria-label="Changer de thème">☀️</button>
     </header>
 
     <section class="hero">
-      <div class="hero-copy">
-        <span class="label">Version ultra premium</span>
-        <h2>Une interface signature pour toutes tes applis.</h2>
+      <div>
+        <span class="badge">V4 Ultra Swipe</span>
+        <h2>Ton style d’app par défaut, en version plus fluide.</h2>
         <p>
-          Base visuelle pensée pour iPhone : fluide, lisible, élégante,
-          avec des modules prêts pour ton quotidien.
+          Swipe entre les modules comme une vraie app iPhone.
+          Base parfaite pour Planning, KDP, revente et futurs outils perso.
         </p>
       </div>
 
-      <div class="hero-device">
-        <div class="device-glass">
+      <div class="hero-widget">
+        <div class="phone-card">
           <div class="island"></div>
-          <div class="mini-title">Aujourd’hui</div>
-          <div class="mini-card glow">
-            <span>Objectif</span>
-            <strong>Optimiser tes outils</strong>
-          </div>
-          <div class="mini-grid">
-            <div><b>3</b><small>Modules</small></div>
-            <div><b>V3</b><small>Premium</small></div>
+          <div class="small-title">K Studio</div>
+          <div class="glass-line"></div>
+          <div class="glass-line short"></div>
+          <div class="mini-tiles">
+            <span>📅</span><span>📘</span><span>💸</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="quick-actions">
-      <button data-view="planning">
-        <span>📅</span>
-        <strong>Planning</strong>
-      </button>
-      <button data-view="kdp">
-        <span>📘</span>
-        <strong>KDP</strong>
-      </button>
-      <button data-view="revente">
-        <span>💸</span>
-        <strong>Revente</strong>
-      </button>
-    </section>
+    <nav class="swipe-tabs" id="swipeTabs" aria-label="Modules">
+      <button class="tab active" data-index="0">Accueil</button>
+      <button class="tab" data-index="1">Planning</button>
+      <button class="tab" data-index="2">KDP</button>
+      <button class="tab" data-index="3">Revente</button>
+      <button class="tab" data-index="4">Style</button>
+      <i class="tab-indicator" id="tabIndicator"></i>
+    </nav>
 
-    <section class="content">
-      <article class="view active" id="home">
-        <div class="title-row">
-          <div>
-            <h3>Style recommandé</h3>
-            <p>La base que je te conseille de garder.</p>
+    <section class="swipe-shell">
+      <div class="swipe-track" id="swipeTrack">
+        <article class="slide">
+          <div class="title-row">
+            <div>
+              <h3>Accueil</h3>
+              <p>Direction visuelle principale.</p>
+            </div>
+            <span class="score">9.5/10</span>
           </div>
-          <span class="score">9.2/10</span>
-        </div>
 
-        <div class="premium-card large">
-          <div class="card-top">
-            <div class="symbol">🧊</div>
-            <span class="tag">Signature</span>
+          <div class="premium-card main">
+            <div class="card-header">
+              <div class="symbol">🧊</div>
+              <span class="mini-badge">Signature</span>
+            </div>
+            <h4>Dark glass premium</h4>
+            <p>
+              Fond sombre, cartes translucides, accent violet/bleu, grosses zones tactiles.
+              C’est le style le plus cohérent pour toutes tes applis.
+            </p>
+            <div class="meter"><i></i></div>
           </div>
-          <h4>Dark glass + accent violet/bleu</h4>
-          <p>
-            C’est le meilleur équilibre pour toi : moderne, sérieux, lisible,
-            et adaptable à une app planning, KDP ou achat/revente.
-          </p>
-          <div class="progress"><i></i></div>
-        </div>
 
-        <div class="cards-2">
-          <div class="premium-card">
-            <div class="symbol small">⚡</div>
-            <h4>Fluide</h4>
-            <p>Animations courtes, peu de saccades, rendu mobile propre.</p>
-          </div>
-          <div class="premium-card">
-            <div class="symbol small">🎯</div>
-            <h4>Commercial</h4>
-            <p>Parfait pour fiches produit, prix, livres et décisions rapides.</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="view" id="planning">
-        <div class="title-row">
-          <div>
-            <h3>Planning</h3>
-            <p>Module visuel pour deux plannings + légende.</p>
-          </div>
-          <span class="score blue">Mobile</span>
-        </div>
-
-        <div class="planning-board">
-          <div class="week-card">
-            <h4>Planning 1</h4>
-            <div class="week-lines">
-              <i style="--w:70%"></i><i style="--w:90%"></i><i style="--w:54%"></i>
+          <div class="mini-grid">
+            <div class="premium-card compact">
+              <span>⚡</span>
+              <strong>Fluide</strong>
+              <p>Transitions courtes et propres.</p>
+            </div>
+            <div class="premium-card compact">
+              <span>🎯</span>
+              <strong>Utile</strong>
+              <p>Modules pensés action rapide.</p>
             </div>
           </div>
-          <div class="week-card">
-            <h4>Planning 2</h4>
-            <div class="week-lines">
-              <i style="--w:85%"></i><i style="--w:62%"></i><i style="--w:78%"></i>
+        </article>
+
+        <article class="slide">
+          <div class="title-row">
+            <div>
+              <h3>Planning</h3>
+              <p>Deux plannings + légende, sans scroll inutile.</p>
+            </div>
+            <span class="score blue">Mobile</span>
+          </div>
+
+          <div class="planning-card">
+            <h4>Planning du haut</h4>
+            <div class="fake-planning">
+              <span style="--w:88%"></span><span style="--w:64%"></span><span style="--w:76%"></span>
             </div>
           </div>
+
+          <div class="planning-card">
+            <h4>Planning du bas</h4>
+            <div class="fake-planning">
+              <span style="--w:72%"></span><span style="--w:91%"></span><span style="--w:58%"></span>
+            </div>
+          </div>
+
           <div class="legend">
             <span><b class="c1"></b>Travail</span>
             <span><b class="c2"></b>Repos</span>
             <span><b class="c3"></b>Urgent</span>
             <span><b class="c4"></b>Perso</span>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <article class="view" id="kdp">
-        <div class="title-row">
-          <div>
-            <h3>KDP Studio</h3>
-            <p>Module pour livres, couvertures et checklists.</p>
+        <article class="slide">
+          <div class="title-row">
+            <div>
+              <h3>KDP</h3>
+              <p>Couvertures, intérieurs, checklist.</p>
+            </div>
+            <span class="score gold">Livre</span>
           </div>
-          <span class="score gold">KDP</span>
-        </div>
 
-        <div class="kdp-layout">
-          <div class="book-preview">
-            <div class="book-spine"></div>
-            <div class="book-front">
-              <span>Premium</span>
-              <strong>Mon Livre</strong>
+          <div class="kdp-zone">
+            <div class="book">
+              <div class="spine"></div>
+              <div class="cover">
+                <small>PREMIUM</small>
+                <strong>Mon Livre</strong>
+              </div>
+            </div>
+
+            <div class="premium-card checklist">
+              <h4>Checklist KDP</h4>
+              <label><input type="checkbox" checked> Format 6×9</label>
+              <label><input type="checkbox" checked> Fond perdu</label>
+              <label><input type="checkbox"> Tranche exacte</label>
+              <label><input type="checkbox"> Miniature lisible</label>
+              <button class="primary">Préparer</button>
             </div>
           </div>
+        </article>
 
-          <div class="premium-card">
-            <h4>Checklist publication</h4>
-            <ul>
-              <li>Format 6×9 vérifié</li>
-              <li>Fond perdu OK</li>
-              <li>Tranche adaptée</li>
-              <li>Titre lisible miniature</li>
-            </ul>
-            <button class="main-button">Préparer le livre</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="view" id="revente">
-        <div class="title-row">
-          <div>
-            <h3>Revente</h3>
-            <p>Module achat/revente type Leboncoin.</p>
-          </div>
-          <span class="score green">Profit</span>
-        </div>
-
-        <div class="deal-card">
-          <div class="deal-img">RTX</div>
-          <div class="deal-body">
-            <h4>Carte graphique testée</h4>
-            <p>Photos propres, description courte, prix clair.</p>
-            <div class="price-grid">
-              <div><span>Rapide</span><strong>120 €</strong></div>
-              <div><span>Normal</span><strong>145 €</strong></div>
-              <div><span>Haut</span><strong>170 €</strong></div>
+        <article class="slide">
+          <div class="title-row">
+            <div>
+              <h3>Revente</h3>
+              <p>Fiche rapide type Leboncoin.</p>
             </div>
-            <button class="main-button">Créer l’annonce</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="view" id="style">
-        <div class="title-row">
-          <div>
-            <h3>Style kit</h3>
-            <p>Couleurs, boutons, champs, cartes.</p>
-          </div>
-          <span class="score">UI</span>
-        </div>
-
-        <div class="style-kit">
-          <div class="palette">
-            <i style="--c:#7c5cff"></i>
-            <i style="--c:#00d4ff"></i>
-            <i style="--c:#35d07f"></i>
-            <i style="--c:#ffcc66"></i>
-            <i style="--c:#ff5c7a"></i>
+            <span class="score green">Profit</span>
           </div>
 
-          <div class="field">
-            <label>Nom du projet</label>
-            <input placeholder="Ex : App Planning Premium" />
+          <div class="deal">
+            <div class="deal-img">RTX</div>
+            <div class="deal-info">
+              <h4>Carte graphique testée</h4>
+              <p>Photos propres, prix clair, annonce courte.</p>
+              <div class="prices">
+                <div><span>Rapide</span><b>120 €</b></div>
+                <div><span>Moyen</span><b>145 €</b></div>
+                <div><span>Haut</span><b>170 €</b></div>
+              </div>
+              <button class="primary">Créer annonce</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="title-row">
+            <div>
+              <h3>Style kit</h3>
+              <p>Composants à réutiliser.</p>
+            </div>
+            <span class="score">UI</span>
           </div>
 
-          <button class="main-button">Action principale</button>
-          <button class="soft-button">Action secondaire</button>
-        </div>
-      </article>
+          <div class="premium-card stylekit">
+            <h4>Palette signature</h4>
+            <div class="palette">
+              <i style="--c:#7c5cff"></i>
+              <i style="--c:#00d4ff"></i>
+              <i style="--c:#35d07f"></i>
+              <i style="--c:#ffcc66"></i>
+              <i style="--c:#ff5c7a"></i>
+            </div>
+
+            <div class="field">
+              <label>Nom du projet</label>
+              <input placeholder="Ex : Planning Premium" />
+            </div>
+
+            <button class="primary">Action principale</button>
+            <button class="secondary">Action secondaire</button>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <nav class="bottom-nav">
-      <button class="active" data-view="home"><span>⌂</span>Accueil</button>
-      <button data-view="planning"><span>▦</span>Planning</button>
-      <button data-view="kdp"><span>◇</span>KDP</button>
-      <button data-view="revente"><span>€</span>Revente</button>
-      <button data-view="style"><span>✦</span>Style</button>
+    <div class="page-dots" id="pageDots">
+      <button class="active" data-index="0"></button>
+      <button data-index="1"></button>
+      <button data-index="2"></button>
+      <button data-index="3"></button>
+      <button data-index="4"></button>
+    </div>
+
+    <nav class="bottom-nav" id="bottomNav">
+      <button class="active" data-index="0"><span>⌂</span>Accueil</button>
+      <button data-index="1"><span>▦</span>Planning</button>
+      <button data-index="2"><span>◇</span>KDP</button>
+      <button data-index="3"><span>€</span>Revente</button>
+      <button data-index="4"><span>✦</span>Style</button>
     </nav>
   </main>
 
