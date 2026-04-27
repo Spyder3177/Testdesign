@@ -1,10 +1,10 @@
 {
-  "name": "Style App V2",
-  "short_name": "Style App",
+  "name": "K Studio Design System",
+  "short_name": "K Studio",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#080b12",
-  "theme_color": "#080b12",
+  "background_color": "#060914",
+  "theme_color": "#060914",
   "orientation": "portrait",
   "icons": [
     {

@@ -1,30 +1,31 @@
-const chips = document.querySelectorAll(".chip");
+const navButtons = document.querySelectorAll("[data-view]");
 const views = document.querySelectorAll(".view");
-const themeBtn = document.getElementById("themeBtn");
+const themeToggle = document.getElementById("themeToggle");
 
-chips.forEach((chip) => {
-  chip.addEventListener("click", () => {
-    const target = chip.dataset.target;
+function openView(id) {
+  views.forEach(view => view.classList.toggle("active", view.id === id));
 
-    chips.forEach((c) => c.classList.remove("active"));
-    chip.classList.add("active");
-
-    views.forEach((view) => {
-      view.classList.toggle("active", view.id === target);
-    });
+  document.querySelectorAll(".bottom-nav [data-view]").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.view === id);
   });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+navButtons.forEach(button => {
+  button.addEventListener("click", () => openView(button.dataset.view));
 });
 
-themeBtn.addEventListener("click", () => {
+themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("light");
-  const light = document.body.classList.contains("light");
-  themeBtn.textContent = light ? "🌙" : "☀️";
-  localStorage.setItem("style-app-theme", light ? "light" : "dark");
+  const isLight = document.body.classList.contains("light");
+  themeToggle.querySelector("span").textContent = isLight ? "🌙" : "☀️";
+  localStorage.setItem("kstudio-theme", isLight ? "light" : "dark");
 });
 
-if (localStorage.getItem("style-app-theme") === "light") {
+if (localStorage.getItem("kstudio-theme") === "light") {
   document.body.classList.add("light");
-  themeBtn.textContent = "🌙";
+  themeToggle.querySelector("span").textContent = "🌙";
 }
 
 if ("serviceWorker" in navigator) {
