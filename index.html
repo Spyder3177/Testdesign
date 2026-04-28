@@ -7,98 +7,170 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="K Studio" />
-
   <link rel="manifest" href="manifest.json" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
-
-  <title>K Studio V4</title>
+  <title>K Studio V7</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
-  <div class="noise"></div>
-  <div class="aurora"></div>
+<body data-theme="dark">
+  <div class="ambient"></div>
 
   <main class="app">
     <header class="topbar">
       <div class="brand">
         <div class="logo">K</div>
         <div>
-          <h1>K Studio</h1>
-          <p>Swipe design system</p>
+          <h1>K Studio V7</h1>
+          <p>Revente • KDP • Planning</p>
         </div>
       </div>
 
-      <button class="round" id="themeToggle" aria-label="Changer de thème">☀️</button>
+      <button class="round-btn" id="themeBtn">Auto</button>
     </header>
 
     <section class="hero">
-      <div>
-        <span class="badge">V4 Ultra Swipe</span>
-        <h2>Ton style d’app par défaut, en version plus fluide.</h2>
-        <p>
-          Swipe entre les modules comme une vraie app iPhone.
-          Base parfaite pour Planning, KDP, revente et futurs outils perso.
-        </p>
-      </div>
-
-      <div class="hero-widget">
-        <div class="phone-card">
-          <div class="island"></div>
-          <div class="small-title">K Studio</div>
-          <div class="glass-line"></div>
-          <div class="glass-line short"></div>
-          <div class="mini-tiles">
-            <span>📅</span><span>📘</span><span>💸</span>
-          </div>
-        </div>
-      </div>
+      <span class="label">Version business + KDP</span>
+      <h2>Ton outil perso pour vendre plus vite et créer mieux.</h2>
+      <p>
+        Swipe entre les modules. Chaque écran adapte son style :
+        business pour la revente, soft pour KDP, dark premium pour l’accueil.
+      </p>
     </section>
 
-    <nav class="swipe-tabs" id="swipeTabs" aria-label="Modules">
-      <button class="tab active" data-index="0">Accueil</button>
-      <button class="tab" data-index="1">Planning</button>
-      <button class="tab" data-index="2">KDP</button>
-      <button class="tab" data-index="3">Revente</button>
-      <button class="tab" data-index="4">Style</button>
-      <i class="tab-indicator" id="tabIndicator"></i>
+    <nav class="tabs" id="tabs">
+      <button class="active" data-index="0">Accueil</button>
+      <button data-index="1">Revente</button>
+      <button data-index="2">KDP</button>
+      <button data-index="3">Planning</button>
+      <button data-index="4">Style</button>
+      <i id="indicator"></i>
     </nav>
 
     <section class="swipe-shell">
-      <div class="swipe-track" id="swipeTrack">
+      <div class="track" id="track">
         <article class="slide">
           <div class="title-row">
             <div>
-              <h3>Accueil</h3>
-              <p>Direction visuelle principale.</p>
+              <h3>Dashboard</h3>
+              <p>Base générale de ton système.</p>
             </div>
-            <span class="score">9.5/10</span>
+            <span class="score">V7 Pro</span>
           </div>
 
-          <div class="premium-card main">
-            <div class="card-header">
-              <div class="symbol">🧊</div>
-              <span class="mini-badge">Signature</span>
+          <div class="card large">
+            <div class="card-head">
+              <div class="icon">🚀</div>
+              <span class="mini-pill">Objectif</span>
             </div>
-            <h4>Dark glass premium</h4>
+            <h4>Une seule base pour toutes tes apps</h4>
             <p>
-              Fond sombre, cartes translucides, accent violet/bleu, grosses zones tactiles.
-              C’est le style le plus cohérent pour toutes tes applis.
+              Tu gardes le même langage visuel, mais chaque module a sa variante :
+              rapide pour la vente, douce pour KDP, premium pour le reste.
             </p>
-            <div class="meter"><i></i></div>
           </div>
 
-          <div class="mini-grid">
-            <div class="premium-card compact">
-              <span>⚡</span>
-              <strong>Fluide</strong>
-              <p>Transitions courtes et propres.</p>
+          <div class="grid-3">
+            <button class="mini-card jump" data-index="1">💸<strong>Revente</strong><small>Prix + annonce</small></button>
+            <button class="mini-card jump" data-index="2">📘<strong>KDP</strong><small>Titre + niche</small></button>
+            <button class="mini-card jump" data-index="3">📅<strong>Planning</strong><small>2 blocs propres</small></button>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="title-row">
+            <div>
+              <h3>Revente Leboncoin</h3>
+              <p>Calcule marge, prix et annonce prête.</p>
             </div>
-            <div class="premium-card compact">
-              <span>🎯</span>
-              <strong>Utile</strong>
-              <p>Modules pensés action rapide.</p>
+            <span class="score green" id="saleScore">Score</span>
+          </div>
+
+          <div class="card form-card">
+            <label>Produit</label>
+            <input id="productName" value="Carte graphique RTX 3060" />
+
+            <div class="split">
+              <div>
+                <label>Prix d’achat</label>
+                <input id="buyPrice" type="number" value="100" />
+              </div>
+              <div>
+                <label>Prix marché estimé</label>
+                <input id="marketPrice" type="number" value="160" />
+              </div>
             </div>
+
+            <button class="primary" id="calcSale">Calculer + générer annonce</button>
+          </div>
+
+          <div class="price-grid">
+            <div><span>Rapide</span><strong id="fastPrice">140 €</strong></div>
+            <div><span>Moyen</span><strong id="midPrice">160 €</strong></div>
+            <div><span>Max</span><strong id="maxPrice">185 €</strong></div>
+            <div><span>Marge rapide</span><strong id="marginFast">40 €</strong></div>
+          </div>
+
+          <div class="card">
+            <h4>Annonce optimisée</h4>
+            <textarea id="adText"></textarea>
+            <button class="secondary" id="copyAd">Copier l’annonce</button>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="title-row">
+            <div>
+              <h3>KDP Studio</h3>
+              <p>Génère titre, sous-titre et structure.</p>
+            </div>
+            <span class="score gold">Soft</span>
+          </div>
+
+          <div class="card form-card">
+            <label>Niche</label>
+            <select id="kdpNiche">
+              <option value="mots mêlés seniors">Mots mêlés seniors</option>
+              <option value="mémoire mamie">Livre mémoire Mamie</option>
+              <option value="mémoire papi">Livre mémoire Papi</option>
+              <option value="carnet gratitude">Carnet gratitude</option>
+              <option value="roman doux senior">Roman doux senior</option>
+            </select>
+
+            <label>Style</label>
+            <select id="kdpStyle">
+              <option value="premium doux">Premium doux</option>
+              <option value="très lisible">Très lisible</option>
+              <option value="vintage chaleureux">Vintage chaleureux</option>
+            </select>
+
+            <button class="primary" id="generateKdp">Générer idée KDP</button>
+          </div>
+
+          <div class="kdp-result">
+            <div class="book-preview">
+              <div class="spine"></div>
+              <div class="cover">
+                <small>SPECIAL SENIORS</small>
+                <strong id="bookCoverTitle">Mots Mêlés Seniors</strong>
+              </div>
+            </div>
+
+            <div class="card">
+              <h4 id="kdpTitle">Mots Mêlés Seniors - Gros Caractères</h4>
+              <p id="kdpSubtitle">100 grilles relaxantes pour stimuler la mémoire et passer un bon moment.</p>
+              <div class="chips" id="kdpKeywords">
+                <span>mots mêlés</span><span>seniors</span><span>gros caractères</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card checklist">
+            <h4>Checklist publication</h4>
+            <label><input type="checkbox" checked> Titre lisible en miniature</label>
+            <label><input type="checkbox" checked> Intérieur simple à produire</label>
+            <label><input type="checkbox"> Couverture 6×9 avec fond perdu</label>
+            <label><input type="checkbox"> Mots-clés cohérents avec la niche</label>
           </div>
         </article>
 
@@ -106,82 +178,35 @@
           <div class="title-row">
             <div>
               <h3>Planning</h3>
-              <p>Deux plannings + légende, sans scroll inutile.</p>
+              <p>Deux plannings l’un au-dessus de l’autre.</p>
             </div>
-            <span class="score blue">Mobile</span>
+            <span class="score blue">Fit page</span>
           </div>
 
-          <div class="planning-card">
-            <h4>Planning du haut</h4>
-            <div class="fake-planning">
-              <span style="--w:88%"></span><span style="--w:64%"></span><span style="--w:76%"></span>
-            </div>
-          </div>
-
-          <div class="planning-card">
-            <h4>Planning du bas</h4>
-            <div class="fake-planning">
-              <span style="--w:72%"></span><span style="--w:91%"></span><span style="--w:58%"></span>
-            </div>
-          </div>
-
-          <div class="legend">
-            <span><b class="c1"></b>Travail</span>
-            <span><b class="c2"></b>Repos</span>
-            <span><b class="c3"></b>Urgent</span>
-            <span><b class="c4"></b>Perso</span>
-          </div>
-        </article>
-
-        <article class="slide">
-          <div class="title-row">
-            <div>
-              <h3>KDP</h3>
-              <p>Couvertures, intérieurs, checklist.</p>
-            </div>
-            <span class="score gold">Livre</span>
-          </div>
-
-          <div class="kdp-zone">
-            <div class="book">
-              <div class="spine"></div>
-              <div class="cover">
-                <small>PREMIUM</small>
-                <strong>Mon Livre</strong>
+          <div class="planning-wrap">
+            <div class="planning-card">
+              <h4>Planning haut</h4>
+              <div class="schedule">
+                <span style="--w:84%">Lundi</span>
+                <span style="--w:70%">Mardi</span>
+                <span style="--w:92%">Mercredi</span>
               </div>
             </div>
 
-            <div class="premium-card checklist">
-              <h4>Checklist KDP</h4>
-              <label><input type="checkbox" checked> Format 6×9</label>
-              <label><input type="checkbox" checked> Fond perdu</label>
-              <label><input type="checkbox"> Tranche exacte</label>
-              <label><input type="checkbox"> Miniature lisible</label>
-              <button class="primary">Préparer</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="slide">
-          <div class="title-row">
-            <div>
-              <h3>Revente</h3>
-              <p>Fiche rapide type Leboncoin.</p>
-            </div>
-            <span class="score green">Profit</span>
-          </div>
-
-          <div class="deal">
-            <div class="deal-img">RTX</div>
-            <div class="deal-info">
-              <h4>Carte graphique testée</h4>
-              <p>Photos propres, prix clair, annonce courte.</p>
-              <div class="prices">
-                <div><span>Rapide</span><b>120 €</b></div>
-                <div><span>Moyen</span><b>145 €</b></div>
-                <div><span>Haut</span><b>170 €</b></div>
+            <div class="planning-card">
+              <h4>Planning bas</h4>
+              <div class="schedule">
+                <span style="--w:76%">Jeudi</span>
+                <span style="--w:88%">Vendredi</span>
+                <span style="--w:62%">Samedi</span>
               </div>
-              <button class="primary">Créer annonce</button>
+            </div>
+
+            <div class="legend">
+              <span><b class="c1"></b>Travail</span>
+              <span><b class="c2"></b>Repos</span>
+              <span><b class="c3"></b>Urgent</span>
+              <span><b class="c4"></b>Perso</span>
             </div>
           </div>
         </article>
@@ -189,35 +214,39 @@
         <article class="slide">
           <div class="title-row">
             <div>
-              <h3>Style kit</h3>
-              <p>Composants à réutiliser.</p>
+              <h3>Style system</h3>
+              <p>3 styles pour éviter que toutes tes apps soient identiques.</p>
             </div>
             <span class="score">UI</span>
           </div>
 
-          <div class="premium-card stylekit">
-            <h4>Palette signature</h4>
-            <div class="palette">
-              <i style="--c:#7c5cff"></i>
-              <i style="--c:#00d4ff"></i>
-              <i style="--c:#35d07f"></i>
-              <i style="--c:#ffcc66"></i>
-              <i style="--c:#ff5c7a"></i>
-            </div>
+          <div class="style-grid">
+            <button class="theme-choice" data-theme="dark">
+              <b>🌙 Dark Glass</b>
+              <span>Dashboard / app principale</span>
+            </button>
+            <button class="theme-choice" data-theme="business">
+              <b>⚡ Business Sharp</b>
+              <span>Revente / décisions rapides</span>
+            </button>
+            <button class="theme-choice" data-theme="soft">
+              <b>📘 KDP Soft</b>
+              <span>Livres / seniors / lecture</span>
+            </button>
+          </div>
 
-            <div class="field">
-              <label>Nom du projet</label>
-              <input placeholder="Ex : Planning Premium" />
-            </div>
-
-            <button class="primary">Action principale</button>
-            <button class="secondary">Action secondaire</button>
+          <div class="card">
+            <h4>Règle simple</h4>
+            <p>
+              Garde la même structure d’app, mais change l’ambiance selon le besoin :
+              argent = business, création = soft, outil global = dark.
+            </p>
           </div>
         </article>
       </div>
     </section>
 
-    <div class="page-dots" id="pageDots">
+    <div class="dots" id="dots">
       <button class="active" data-index="0"></button>
       <button data-index="1"></button>
       <button data-index="2"></button>
@@ -225,11 +254,11 @@
       <button data-index="4"></button>
     </div>
 
-    <nav class="bottom-nav" id="bottomNav">
+    <nav class="bottom-nav">
       <button class="active" data-index="0"><span>⌂</span>Accueil</button>
-      <button data-index="1"><span>▦</span>Planning</button>
+      <button data-index="1"><span>€</span>Vente</button>
       <button data-index="2"><span>◇</span>KDP</button>
-      <button data-index="3"><span>€</span>Revente</button>
+      <button data-index="3"><span>▦</span>Planning</button>
       <button data-index="4"><span>✦</span>Style</button>
     </nav>
   </main>
